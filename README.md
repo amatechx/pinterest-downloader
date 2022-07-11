@@ -24,13 +24,13 @@ Download all images/videos from Pinterest user/board/section.
 
 ### Usage:
 
-    $ python3 pinterest-downloader.py --help
+    $ python pin.py --help
     usage: pinterest-downloader.py [-h] [-d DIR] [-j THREAD_MAX] [-c CUT] [-bt]
                                 [-lt] [-f] [-rs] [-ua] [-es] [-io] [-vo]
                                 [-ps HTTPS_PROXY] [-p HTTP_PROXY]
                                 [path]
 
-    Download ALL board/section from 🅿️interest by username, username/boardname,
+    Download ALL board/section from Pinterest by username, username/boardname,
     username/boardname/section or link. Support image and video. Filename compose
     of PinId_Title_Description_Date.Ext. PinId always there while the rest is
     optional. If filename too long will endswith ... and you can check details in
@@ -85,15 +85,15 @@ Download all images/videos from Pinterest user/board/section.
                             Set proxy for http.
 
 ### Example Usage:
-    $ python3 pinterest-downloader.py # Prompt for insert path. Note: Only support python 3, not python 2
-    $ export PYTHONIOENCODING=utf8; python3 pinterest-downloader.py # If you get "'gbk' codec can't encode character" error
-    $ python3 pinterest-downloader.py https://www.pinterest.com/antonellomiglio/computer/ 
-    $ python3 pinterest-downloader.py https://www.pinterest.com/antonellomiglio/computer/ -d comp
-    $ python3 pinterest-downloader.py -d comp https://www.pinterest.com/antonellomiglio/computer/ # or path in last
-    $ python3 pinterest-downloader.py https://www.pinterest.com/antonellomiglio/computer/ -bt -lt -d comp -f -rs # various options
-    $ python3 pinterest-downloader.py https://www.pinterest.com/antonellomiglio/computer/ -c 40 # Default already good enough
-    $ python3 pinterest-downloader.py https://www.pinterest.com/antonellomiglio/computer/ -j 666 # Default already fast enough
-    $ python3 pinterest-downloader.py https://www.pinterest.com/Foodrecipessmith/food-recipes/ -ps "socks4://123.123.123.123:12345" -p "socks4://123.123.123.123:12345" # set proxies
+    $ python pin.py # Prompt for insert path. Note: Only support python 3, not python 2
+    $ export PYTHONIOENCODING=utf8; python pin.py # If you get "'gbk' codec can't encode character" error
+    $ python pin.py https://id.pinterest.com/sharingcontent21/
+    $ python pin.py https://www.pinterest.com/antonellomiglio/computer/ -d comp
+    $ python pin.py -d comp https://www.pinterest.com/antonellomiglio/computer/ # or path in last
+    $ python pin.py https://www.pinterest.com/antonellomiglio/computer/ -bt -lt -d comp -f -rs # various options
+    $ python pin.py https://www.pinterest.com/antonellomiglio/computer/ -c 40 # Default already good enough
+    $ python pin.py https://www.pinterest.com/antonellomiglio/computer/ -j 666 # Default already fast enough
+    $ python pin.py https://www.pinterest.com/Foodrecipessmith/food-recipes/ -ps "socks4://123.123.123.123:12345" -p "socks4://123.123.123.123:12345" # set proxies
     $ pin https://www.pinterest.com/antonellomiglio/computer/  # make alias/function in ~/.bash_aliases(or any shell startup script) to easier type
     $ pin https://www.pinterest.com/Foodrecipessmith/ # Download all boards by username.
     $ pin https://www.pinterest.com/Foodrecipessmith/food-recipes/ # Download all sections and images of boards. But _saved/_created/pins treat as username only.
@@ -106,21 +106,21 @@ Download all images/videos from Pinterest user/board/section.
     $ pin pin/819444094683773705 # Download pin with shortform instead of link
 
 ### Example Output:
-    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python3 pinterest-downloader.py -d comp https://www.pinterest.com/antonellomiglio/computer/ 
+    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python pin.py -d comp https://www.pinterest.com/antonellomiglio/computer/ 
     [...] Getting all images in this board: computer ... [ 173 / ? ] [➕] Found 195 image/videos
     Download into directory:  comp/antonellomiglio/Computer/
     [✔] Downloaded: |##################################################| 100.0% Complete   
     [i] Time Spent: 0:00:06
 
 ##### Rerun(ensure same directory) will no new item found since latest pin Id file:
-    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python3 pinterest-downloader.py -d comp https://www.pinterest.com/antonellomiglio/computer/
+    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python pin.py -d comp https://www.pinterest.com/antonellomiglio/computer/
     [i] Job is download single board by username/boardname: antonellomiglio/computer
     [...] Getting all images in this board: computer ... [ 0 / ? ]
     [i] No new item found.
     [i] Time Spent: 0:00:04
 
 ##### Rerun in future(upload or delete highest pin id files to test) to fetch new items only which Pin IDs higher than existing Pin ID, speed up without fetch all pages for large board(use -rs if user reordered concerns):
-    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python3 pinterest-downloader.py -d comp https://www.pinterest.com/antonellomiglio/computer/
+    xb@dnxb:~/Downloads/pinterest/pinterest-downloader$ python pin.py -d comp https://www.pinterest.com/antonellomiglio/computer/
     [i] Job is download single board by username/boardname: antonellomiglio/computer
     [...] Getting all images in this board: computer ... [ 0 / ? ] [➕] Found 5 new image/videos
     Download into directory:  comp/antonellomiglio/Computer/
